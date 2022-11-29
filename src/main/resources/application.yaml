@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: 'storage-service'
+  datasource:
+    username: postgres
+    password: secret
+    url: jdbc:postgresql:///storage-db
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+
+app:
+  input:
+    link:
