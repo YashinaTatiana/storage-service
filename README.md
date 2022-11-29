@@ -77,7 +77,7 @@ Transfer-Encoding: chunked
 [2,3]
 ```
 
-В случае невалидного запроса (color или box = null)
+В случае невалидного запроса (```color``` или ```box``` = null)
 
 ```
 HTTP/1.1 400
@@ -89,6 +89,10 @@ Transfer-Encoding: chunked
         {
             "message": "must not be null",
             "field": "box"
+        },
+        {
+            "message": "must not be null",
+            "field": "color"
         }
     ]
 }
