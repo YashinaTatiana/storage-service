@@ -22,4 +22,7 @@ public interface ItemRepository extends CrudRepository<Item, Integer> {
             WHERE color=:color
             """, nativeQuery = true)
     List<Integer> findItems(String color, Integer boxId);
+
+    @Override
+    List<Item> findAll();
 }
