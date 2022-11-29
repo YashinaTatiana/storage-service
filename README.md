@@ -12,15 +12,37 @@ docker-compose up
 - ```path``` - путь к файлу
 
 Ссылка определяет источник, из которого загружаются данные в XML-формате. 
+
 Тип ссылки ```type```:
 - ```file``` (внешний файл) 
 - ```classpath``` (файл в classpath) 
 - ```url``` (URL)
 
 Примеры:
-- classpath:test.xml 
-- file:input.xml
-- url:file:/input.xml
+- ```classpath:test.xml```
+- ```file:input.xml```
+- ```url:file:/input.xml```
+
+### Пример XML файла (test.xml):
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<Storage>
+ <Box id="1">
+   <Item id="1"/>
+   <Item color="red" id="2"/>
+   <Box id="3">
+       <Item id="3" color="red" />
+       <Item id="4" color="black" />
+   </Box>
+   <Box id="6"/>
+   <Item id="5"/>
+ </Box>
+ <Item id="6"/>
+</Storage>
+```
+
+
 
 ## REST сервис 
 
