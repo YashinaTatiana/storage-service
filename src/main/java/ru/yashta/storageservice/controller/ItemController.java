@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.yashta.storageservice.model.ItemRequestDto;
-import ru.yashta.storageservice.service.StorageService;
+import ru.yashta.storageservice.service.ItemService;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/items")
-public class StorageController {
+public class ItemController {
 
-    private final StorageService service;
+    private final ItemService service;
 
     @PostMapping
     public ResponseEntity<List<Integer>> getItemsInBoxByColor(@Valid @RequestBody ItemRequestDto requestDto) {

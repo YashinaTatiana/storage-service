@@ -14,7 +14,7 @@ import java.net.URL;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class URLStorageParser extends StorageParser {
+public class URLStorageParser implements StorageParser {
 
     private final Unmarshaller storageUnmarshaller;
 

@@ -7,9 +7,9 @@ import ru.yashta.storageservice.model.Storage;
 import java.io.IOException;
 
 
-public abstract class StorageParser {
+public interface StorageParser {
 
-    public abstract Storage parseXmlFile(String path) throws JAXBException, IOException;
+    Storage parseXmlFile(String path) throws JAXBException, IOException;
 
-    public abstract PathType getPathType();
+    PathType getPathType();
 }

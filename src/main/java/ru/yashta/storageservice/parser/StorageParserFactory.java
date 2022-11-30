@@ -9,19 +9,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/***
+ * Factory of storage parser strategies,
+ * where parserStrategies map contains:
+ * { CLASSPATH -> ClassPathStorageParser,
+ *   FILE -> FileStorageParser,
+ *   URL -> URLStorageParser }
+ */
 @Component
 public class StorageParserFactory {
 
-    private final Map<PathType, StorageParser> storageParserStrategy;
+    private final Map<PathType, StorageParser> parserStrategies;
 
     @Autowired
     public StorageParserFactory(Set<StorageParser> storageParsers) {
-        storageParserStrategy = new HashMap<>();
-        storageParsers.forEach(parser -> storageParserStrategy.put(parser.getPathType(), parser));
+        parserStrategies = new HashMap<>();
+        storageParsers.forEach(parser -> parserStrategies.put(parser.getPathType(), parser));
     }
 
     public StorageParser getStorageParserByPath(PathType pathType) {
-        StorageParser parser = storageParserStrategy.get(pathType);
+        StorageParser parser = parserStrategies.get(pathType);
         if (null == parser) {
             throw new UnsupportedPathTypeException();
         }

@@ -3,9 +3,8 @@ package ru.yashta.storageservice.service;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
+import ru.yashta.storageservice.BaseTest;
 import ru.yashta.storageservice.entity.Box;
 import ru.yashta.storageservice.exception.InvalidPathFormatException;
 import ru.yashta.storageservice.repository.BoxRepository;
@@ -16,9 +15,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @Transactional
-@ActiveProfiles("test")
-@SpringBootTest
-public class StorageServiceTest {
+public class StorageServiceTest extends BaseTest {
 
     @Autowired
     private StorageService storageService;

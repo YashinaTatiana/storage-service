@@ -10,7 +10,6 @@ import ru.yashta.storageservice.entity.Item;
 import ru.yashta.storageservice.exception.InvalidPathFormatException;
 import ru.yashta.storageservice.exception.StorageParseException;
 import ru.yashta.storageservice.model.BoxDto;
-import ru.yashta.storageservice.model.ItemRequestDto;
 import ru.yashta.storageservice.model.PathType;
 import ru.yashta.storageservice.model.Storage;
 import ru.yashta.storageservice.parser.StorageParserFactory;
@@ -18,7 +17,6 @@ import ru.yashta.storageservice.repository.BoxRepository;
 import ru.yashta.storageservice.repository.ItemRepository;
 
 import java.io.IOException;
-import java.util.List;
 
 @Service
 @Slf4j
@@ -29,13 +27,19 @@ public class StorageServiceImpl implements StorageService {
     private final ItemRepository itemRepository;
     private final BoxRepository boxRepository;
 
+    /***
+     *
+     * @param link - link of xml file in format type:path,
+     *  where type in [classpath, file, url]
+     *  and path - path to xml file
+     */
     @Override
-    public void load(String path) {
-        int index = path.indexOf(":");
+    public void load(String link) {
+        int index = link.indexOf(":");
         if (index == -1) {
             throw new InvalidPathFormatException("Path should have format - type:path");
         }
-        load(PathType.fromString(path.substring(0, index)), path.substring(index+1));
+        load(PathType.fromString(link.substring(0, index)), link.substring(index + 1));
     }
 
     public void load(PathType type, String path) {
@@ -64,10 +68,5 @@ public class StorageServiceImpl implements StorageService {
         boxRepository.save(box);
 
         boxDto.getBoxes().forEach(innerBox -> load(innerBox, box));
-    }
-
-    @Override
-    public List<Integer> getItems(ItemRequestDto requestDto) {
-        return itemRepository.findItems(requestDto.getColor(), requestDto.getBox());
     }
 }

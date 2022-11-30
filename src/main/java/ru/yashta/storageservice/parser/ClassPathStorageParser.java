@@ -11,7 +11,7 @@ import ru.yashta.storageservice.model.Storage;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class ClassPathStorageParser extends StorageParser {
+public class ClassPathStorageParser implements StorageParser {
 
     private final Unmarshaller storageUnmarshaller;
 

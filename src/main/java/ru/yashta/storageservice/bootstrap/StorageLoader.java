@@ -20,7 +20,7 @@ public class StorageLoader implements CommandLineRunner {
     private final StorageService storageService;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         if (link != null && !link.isEmpty()) {
             storageService.load(link);
         } else {

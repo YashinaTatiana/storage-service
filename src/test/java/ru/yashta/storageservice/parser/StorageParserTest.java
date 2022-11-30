@@ -6,9 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
+import ru.yashta.storageservice.BaseTest;
 import ru.yashta.storageservice.model.BoxDto;
 import ru.yashta.storageservice.model.PathType;
 import ru.yashta.storageservice.model.Storage;
@@ -19,9 +18,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @Transactional
-@ActiveProfiles("test")
-@SpringBootTest
-public class StorageParserTest {
+public class StorageParserTest extends BaseTest {
 
     @Autowired
     private StorageParserFactory factory;

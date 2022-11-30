@@ -14,7 +14,7 @@ import java.io.IOException;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class FileStorageParser extends StorageParser {
+public class FileStorageParser implements StorageParser {
 
     private final Unmarshaller storageUnmarshaller;
 
