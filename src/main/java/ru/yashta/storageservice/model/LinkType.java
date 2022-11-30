@@ -5,16 +5,16 @@ import ru.yashta.storageservice.exception.InvalidPathFormatException;
 
 import java.util.Arrays;
 
-public enum PathType {
+public enum LinkType {
     FILE, URL, CLASSPATH;
 
-    public static PathType fromString(String type) {
+    public static LinkType fromString(String type) {
         try {
-            return PathType.valueOf(type.toUpperCase());
+            return LinkType.valueOf(type.toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new InvalidPathFormatException(
                     "Not supported path type: [%s]. Supported values: %s"
-                            .formatted(type, Arrays.asList(PathType.values())));
+                            .formatted(type, Arrays.asList(LinkType.values())));
         }
     }
 }

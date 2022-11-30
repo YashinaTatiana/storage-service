@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import ru.yashta.storageservice.BaseTest;
 import ru.yashta.storageservice.model.BoxDto;
-import ru.yashta.storageservice.model.PathType;
+import ru.yashta.storageservice.model.LinkType;
 import ru.yashta.storageservice.model.Storage;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class StorageParserTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("parserProvider")
-    void testParseXml(PathType type, String path) throws JAXBException, IOException {
+    void testParseXml(LinkType type, String path) throws JAXBException, IOException {
         Storage storage = factory.getStorageParserByPath(type).parseXmlFile(path);
         Assertions.assertThat(storage).isNotNull();
         Assertions.assertThat(storage.getBoxes()).hasSize(1);
@@ -34,7 +34,7 @@ public class StorageParserTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("parserProvider")
-    void testParseXml_NestedElements(PathType type, String path) throws JAXBException, IOException {
+    void testParseXml_NestedElements(LinkType type, String path) throws JAXBException, IOException {
         Storage storage = factory.getStorageParserByPath(type).parseXmlFile(path);
         Assertions.assertThat(storage).isNotNull();
         Assertions.assertThat(storage.getBoxes()).hasSize(1);
@@ -48,7 +48,7 @@ public class StorageParserTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("parserProvider")
-    void testParseXml_Attributes(PathType type, String path) throws JAXBException, IOException {
+    void testParseXml_Attributes(LinkType type, String path) throws JAXBException, IOException {
         Storage storage = factory.getStorageParserByPath(type).parseXmlFile(path);
         Assertions.assertThat(storage).isNotNull();
 
@@ -64,8 +64,8 @@ public class StorageParserTest extends BaseTest {
 
     static Stream<Arguments> parserProvider() {
         return Stream.of(
-                arguments(PathType.CLASSPATH, "test.xml"),
-                arguments(PathType.FILE, "src/test/resources/test.xml")
+                arguments(LinkType.CLASSPATH, "test.xml"),
+                arguments(LinkType.FILE, "src/test/resources/test.xml")
         );
     }
 }

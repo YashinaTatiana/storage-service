@@ -2,8 +2,8 @@ package ru.yashta.storageservice.parser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.yashta.storageservice.exception.UnsupportedPathTypeException;
-import ru.yashta.storageservice.model.PathType;
+import ru.yashta.storageservice.exception.UnsupportedLinkTypeException;
+import ru.yashta.storageservice.model.LinkType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,18 +19,18 @@ import java.util.Set;
 @Component
 public class StorageParserFactory {
 
-    private final Map<PathType, StorageParser> parserStrategies;
+    private final Map<LinkType, StorageParser> parserStrategies;
 
     @Autowired
     public StorageParserFactory(Set<StorageParser> storageParsers) {
         parserStrategies = new HashMap<>();
-        storageParsers.forEach(parser -> parserStrategies.put(parser.getPathType(), parser));
+        storageParsers.forEach(parser -> parserStrategies.put(parser.getLinkType(), parser));
     }
 
-    public StorageParser getStorageParserByPath(PathType pathType) {
-        StorageParser parser = parserStrategies.get(pathType);
+    public StorageParser getStorageParserByPath(LinkType linkType) {
+        StorageParser parser = parserStrategies.get(linkType);
         if (null == parser) {
-            throw new UnsupportedPathTypeException();
+            throw new UnsupportedLinkTypeException();
         }
         return parser;
     }

@@ -5,7 +5,7 @@ import jakarta.xml.bind.Unmarshaller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import ru.yashta.storageservice.model.PathType;
+import ru.yashta.storageservice.model.LinkType;
 import ru.yashta.storageservice.model.Storage;
 
 @Slf4j
@@ -21,7 +21,7 @@ public class ClassPathStorageParser implements StorageParser {
     }
 
     @Override
-    public PathType getPathType() {
-        return PathType.CLASSPATH;
+    public LinkType getLinkType() {
+        return LinkType.CLASSPATH;
     }
 }

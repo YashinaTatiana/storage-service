@@ -10,7 +10,7 @@ import ru.yashta.storageservice.entity.Item;
 import ru.yashta.storageservice.exception.InvalidPathFormatException;
 import ru.yashta.storageservice.exception.StorageParseException;
 import ru.yashta.storageservice.model.BoxDto;
-import ru.yashta.storageservice.model.PathType;
+import ru.yashta.storageservice.model.LinkType;
 import ru.yashta.storageservice.model.Storage;
 import ru.yashta.storageservice.parser.StorageParserFactory;
 import ru.yashta.storageservice.repository.BoxRepository;
@@ -39,10 +39,10 @@ public class StorageServiceImpl implements StorageService {
         if (index == -1) {
             throw new InvalidPathFormatException("Path should have format - type:path");
         }
-        load(PathType.fromString(link.substring(0, index)), link.substring(index + 1));
+        load(LinkType.fromString(link.substring(0, index)), link.substring(index + 1));
     }
 
-    public void load(PathType type, String path) {
+    public void load(LinkType type, String path) {
         try {
             Storage storage = parserFactory.getStorageParserByPath(type).parseXmlFile(path);
             load(storage);

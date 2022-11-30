@@ -50,7 +50,7 @@ public class StorageServiceTest extends BaseTest {
     }
 
     @Test
-    void testLoadXmlFile_InvalidPathType() {
+    void testLoadXmlFile_InvalidLinkType() {
         assertThrows(InvalidPathFormatException.class, () -> storageService.load("incorrectType:link"));
         Assertions.assertThat(itemRepository.findAll()).isEmpty();
         Assertions.assertThat(boxRepository.findAll()).isEmpty();
