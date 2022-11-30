@@ -1,4 +1,4 @@
-package ru.yashta.storageservice.bootstrap;
+package ru.yashta.storageservice.boot;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
