@@ -15,6 +15,25 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Integer> getItems(ItemRequestDto requestDto) {
-        return itemRepository.findItems(requestDto.getColor(), requestDto.getBox());
+        String color = requestDto.getColor();
+        Integer boxId = requestDto.getBox();
+        if (hasColor(color) && hasBoxContainer(boxId)) {
+            return itemRepository.findItems(color, boxId);
+        }
+        if (hasBoxContainer(boxId)) {
+            return itemRepository.findItemsByBoxIdWithoutColor(boxId);
+        }
+        if (hasColor(color)) {
+            return itemRepository.findItemsByColorWithoutBoxId(color);
+        }
+        return itemRepository.findItemsWithoutBoxIdAndColor();
+    }
+
+    private boolean hasColor(String color) {
+        return color != null && !color.isBlank();
+    }
+
+    private boolean hasBoxContainer(Integer box) {
+        return box != null;
     }
 }

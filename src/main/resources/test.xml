@@ -10,5 +10,6 @@
         <Box id="6"/>
         <Item id="5"/>
     </Box>
-    <Item id="6"/>
+    <Item id="6" color="green"/>
+    <Item id="7"/>
 </Storage>

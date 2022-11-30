@@ -29,7 +29,7 @@ public class StorageServiceTest extends BaseTest {
         storageService.load("classpath:test.xml");
         var itemList = itemRepository.findAll();
         var boxList = boxRepository.findAll();
-        Assertions.assertThat(itemList).hasSize(6);
+        Assertions.assertThat(itemList).hasSize(7);
         Assertions.assertThat(boxList).hasSize(3);
 
         Optional<Box> boxOptional = boxList.stream().filter(b -> b.getId().equals(1)).findFirst();

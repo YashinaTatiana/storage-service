@@ -32,4 +32,25 @@ public class ItemServiceTest extends BaseTest {
         List<Integer> items = itemService.getItems(ItemRequestDto.builder().color("noColor").box(1).build());
         assertThat(items).isNotNull().isEmpty();
     }
+
+    @Test
+    void testGetItemsWithoutContainer() {
+        storageService.load(LinkType.CLASSPATH, "test.xml");
+        List<Integer> items = itemService.getItems(ItemRequestDto.builder().color("green").build());
+        assertThat(items).isNotNull().hasSize(1).contains(6);
+    }
+
+    @Test
+    void testGetItemsWithoutColor() {
+        storageService.load(LinkType.CLASSPATH, "test.xml");
+        List<Integer> items = itemService.getItems(ItemRequestDto.builder().box(1).build());
+        assertThat(items).isNotNull().hasSize(2).contains(1, 5);
+    }
+
+    @Test
+    void testGetItemsWithoutColorAndBoxContainer() {
+        storageService.load(LinkType.CLASSPATH, "test.xml");
+        List<Integer> items = itemService.getItems(ItemRequestDto.builder().build());
+        assertThat(items).isNotNull().hasSize(1).contains(7);
+    }
 }

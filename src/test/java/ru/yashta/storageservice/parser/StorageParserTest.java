@@ -29,7 +29,7 @@ public class StorageParserTest extends BaseTest {
         Storage storage = factory.getStorageParserByPath(type).parseXmlFile(path);
         Assertions.assertThat(storage).isNotNull();
         Assertions.assertThat(storage.getBoxes()).hasSize(1);
-        Assertions.assertThat(storage.getItems()).hasSize(1);
+        Assertions.assertThat(storage.getItems()).hasSize(2);
     }
 
     @ParameterizedTest
@@ -55,7 +55,7 @@ public class StorageParserTest extends BaseTest {
         Assertions.assertThat(storage.getBoxes()).hasSize(1);
         Assertions.assertThat(storage.getBoxes().get(0).getId()).isEqualTo(1);
 
-        Assertions.assertThat(storage.getItems()).hasSize(1);
+        Assertions.assertThat(storage.getItems()).hasSize(2);
         Assertions.assertThat(storage.getItems().get(0).getId()).isEqualTo(6);
         Assertions.assertThat(storage.getItems().get(0).getColor())
                 .isNotNull()
