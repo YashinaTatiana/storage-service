@@ -1,5 +1,6 @@
 package ru.yashta.storageservice.model;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Builder
 public class ItemRequestDto {
 
-    @NotNull
+    @NotBlank
     private String color;
     @NotNull
     private Integer box;
